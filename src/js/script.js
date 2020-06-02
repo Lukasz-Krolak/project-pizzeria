@@ -1,3 +1,4 @@
+
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
 
 {
@@ -69,7 +70,7 @@
       /*generate HTML based on template */
 
       const generatedHTML = templates.menuProduct(thisProduct.data);
-        // console.log(gene)
+      // console.log(gene)
       /* create element usign utils.createElementFromHTML */
 
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
@@ -83,33 +84,9 @@
       menuContainer.appendChild(thisProduct.element);
 
     }
-    initAccordion(){
-      const thisProduct = this;
-/* find the clickable trigger (the element that should react to clicking) */
 
-    /* START: click event listener to trigger */
-
-      /* prevent default action for event */
-
-      /* toggle active class on element of thisProduct */
-
-      /* find all active products */
-
-      /* START LOOP: for each active product */
-
-        /* START: if the active product isn't the element of thisProduct */
-
-          /* remove class active for the active product */
-
-        /* END: if the active product isn't the element of thisProduct */
-
-      /* END LOOP: for each active product */
-
-    /* END: click event listener to trigger */
-  }
-}
-    }
-  }
+  }  
+  
 
   const app = {
     initMenu: function(){
@@ -119,10 +96,10 @@
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
       }
-    //   const thisApp = this;
-    //   console.log('thisApp.data:',thisApp.data);
-    //   const testProduct = new Product();
-    //   console.log('testProduct:', testProduct);
+      // const thisApp = this;
+      // console.log('thisApp.data:',thisApp.data);
+      // const testProduct = new Product();
+      // console.log('testProduct:', testProduct);
     },
     initData: function(){
       const thisApp = this;
