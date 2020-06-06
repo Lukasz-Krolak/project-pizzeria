@@ -84,6 +84,40 @@
       menuContainer.appendChild(thisProduct.element);
 
     }
+    initAccordion(){
+      const thisProduct = this;
+  
+      /* find the clickable trigger (the element that should react to clicking) */
+      thisProduct.element = document.querySelector(menuProduct);
+  
+      /* START: click event listener to trigger */
+      for (const element of elements){
+  
+        /* prevent default action for event */
+        element.addEventList('click',function(event){;
+          event.preventdefault();
+        /* toggle active class on element of thisProduct */
+          thisProduct.element = classList.toggle(classNames.menuProducts.wrapperActive);
+        /* find all active products */
+          const activeElements = document.querySelectorAll('product.active');
+
+        /* START LOOP: for each active product */
+        for (const activeElement of activeElements){;
+  
+          /* START: if the active product isn't the element of thisProduct */
+          if (actuiveElement != thisProduct.element);
+  
+            /* remove class active for the active product */
+            else activeElement.class.remove(classNames.menuProduct.wrapperActive;
+  
+          /* END: if the active product isn't the element of thisProduct */
+        }
+  
+        /* END LOOP: for each active product */
+
+  
+      /* END: click event listener to trigger */
+      }
 
   }  
   
