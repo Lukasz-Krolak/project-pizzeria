@@ -3,7 +3,6 @@
 
 {
   'use strict';
-  
   const select = {
     templateOf: {
       menuProduct: '#template-menu-product',
@@ -33,7 +32,6 @@
       },
     },
   };
-  
   const classNames = {
     menuProduct: {
       wrapperActive: 'active',
@@ -84,8 +82,6 @@
       menuContainer.appendChild(thisProduct.element);
 
     }
-
-  
     initAccordion(){
       const thisProduct = this;
 
@@ -96,7 +92,7 @@
       for (const element of elements){
 
         /* prevent default action for event */
-        element.addEventList('click',function(event){;
+        element.addEventList('click',function(event){
           event.preventDefault();
         },
         /* toggle active class on element of thisProduct */
@@ -108,7 +104,7 @@
         for (const activeElement of activeElements){
 
           /* START: if the active product isn't the element of thisProduct */
-          if (actuiveElement != thisProduct.element) {
+          if (activeElement != thisProduct.element) {
 
             /* remove class active for the active product */
             activeElement.class.remove(classNames.menuProduct.wrapperActive);
@@ -121,10 +117,8 @@
 
       /* END: click event listener to trigger */
       }
-
-     
-  
-
+    
+    }  
       const app = {
         initMenu: function(){
 
@@ -149,16 +143,15 @@
           console.log('classNames:', classNames);
           console.log('settings:', settings);
           console.log('templates:', templates);
-
           thisApp.initData();
           thisApp.initMenu();
         },
       };
+    
+      app.init();
+    }
+
+  
   
 
-
-      app.init();
-    
-    }
-  }
 }
