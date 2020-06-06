@@ -89,7 +89,7 @@
       const trigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       /* START: click event listener to trigger */
-      trigger.addEvententListener('click',function(event){
+      trigger.addEventListener('click',function(event){
 
         /* prevent default action for event */
         
