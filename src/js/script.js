@@ -119,38 +119,38 @@
       }
     
     }  
-      const app = {
-        initMenu: function(){
+      
+  }
+  const app = {
+    initMenu: function(){
 
-          const thisApp = this;
-          console.log('thisApp.data:',thisApp.data);
-          for(let productData in thisApp.data.products){
-            new Product(productData, thisApp.data.products[productData]);
-          }
-          console.log('thisApp.data:',thisApp.data);
-          const testProduct = new Product();
-          console.log('testProduct:', testProduct);
-        },
-        initData: function(){
-          const thisApp = this;
+      const thisApp = this;
+      console.log('thisApp.data:',thisApp.data);
+      for(let productData in thisApp.data.products){
+        new Product(productData, thisApp.data.products[productData]);
+      }
+      console.log('thisApp.data:',thisApp.data);
+      const testProduct = new Product();
+      console.log('testProduct:', testProduct);
+    },
+    initData: function(){
+      const thisApp = this;
 
-          thisApp.data = dataSource;
-        },
-        init: function(){
-          const thisApp = this;
-          console.log('*** App starting ***');
-          console.log('thisApp:', thisApp);
-          console.log('classNames:', classNames);
-          console.log('settings:', settings);
-          console.log('templates:', templates);
-          thisApp.initData();
-          thisApp.initMenu();
-        },
-      };
-    
-      app.init();
-    }
-
+      thisApp.data = dataSource;
+    },
+    init: function(){
+      const thisApp = this;
+      console.log('*** App starting ***');
+      console.log('thisApp:', thisApp);
+      console.log('classNames:', classNames);
+      console.log('settings:', settings);
+      console.log('templates:', templates);
+      thisApp.initData();
+      thisApp.initMenu();
+    },
+  };
+  
+  app.init();
   
   
 
