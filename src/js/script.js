@@ -89,13 +89,13 @@
       const trigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       /* START: click event listener to trigger */
-      trigger.addEventList('click',function(event){
+      trigger.addEvententListener('click',function(event){
 
         /* prevent default action for event */
         
-          event.preventDefault();
+        event.preventDefault();
         /* toggle active class on element of thisProduct */
-        thisProduct.element = classList.toggle(classNames.menuProducts.wrapperActive));
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
         /* find all active products */
         const activeElements = document.querySelectorAll('product.active');
 
@@ -106,7 +106,7 @@
           if (activeElement != thisProduct.element) {
 
             /* remove class active for the active product */
-            activeElement.class.remove(classNames.menuProduct.wrapperActive);
+            activeElement.classList.remove(classNames.menuProduct.wrapperActive);
 
           /* END: if the active product isn't the element of thisProduct */
           }
@@ -115,7 +115,7 @@
         }
 
       /* END: click event listener to trigger */
-      }
+      });
     
     }  
       
