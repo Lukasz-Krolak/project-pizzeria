@@ -1,4 +1,5 @@
 
+
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
 
 {
@@ -97,8 +98,8 @@
         /* toggle active class on element of thisProduct */
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
         /* find all active products */
-        const activeElements = document.querySelectorAll('product.active');
-
+        const activeElements = document.querySelectorAll('.product.active');
+        console.log(activeElements);
         /* START LOOP: for each active product */
         for (const activeElement of activeElements){
 
@@ -129,8 +130,8 @@
         new Product(productData, thisApp.data.products[productData]);
       }
       console.log('thisApp.data:',thisApp.data);
-      const testProduct = new Product();
-      console.log('testProduct:', testProduct);
+      // const testProduct = new Product();
+      // console.log('testProduct:', testProduct);
     },
     initData: function(){
       const thisApp = this;
