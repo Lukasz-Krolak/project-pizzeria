@@ -192,11 +192,12 @@
             price -= option.price;
             console.log('John Cena zdjęty skl', price, option.price);
           }
+          //stworzona stała 8.6
           const activeImages = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
           console.log('aktywny obrazek',activeImages);
-          //jesli coś wybraliśmy to się obrazek zmieni
-          if (optionSelected){
-            if(!thisProduct.params[paramId]){
+          //jesli coś wybraliśmy to się obrazek zmieni 8,6
+          if(optionSelected) {
+            if(!thisProduct.params[paramId]) {
               thisProduct.params[paramId] = {
                 label: param.label,
                 options: {},
@@ -207,7 +208,7 @@
               activeImage.classList.add(classNames.menuProduct.imageVisible);
             }
           } else {
-            for (let activeImage of activeImages){
+            for (let activeImage of activeImages) {
               activeImage.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
