@@ -61,7 +61,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
-      thisProduct.initAmountWidget(); // 8.7 
+      // thisProduct.initAmountWidget(); // 8.7 
       thisProduct.processOrder();
       console.log('new Product', thisProduct);
     }
@@ -95,7 +95,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
-      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget); //8.7
+      // thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget); //8.7
     }
     initAccordion(){
       const thisProduct = this;
@@ -156,7 +156,7 @@
     }
     processOrder(){
       const thisProduct = this;
-    
+      thisProduct.params = {};
       /* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData',formData);
@@ -227,34 +227,35 @@
       console.log(thisProduct.priceElem);
 
     }
-    initAmountWidget(){
-      const thisProduct = this;
-      thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', function(){
-      thisProduct.processOrder();
-      });
+    //8.7
+    // initAmountWidget(){
+    //   const thisProduct = this;
+    //   thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
+    //   thisProduct.amountWidgetElem.addEventListener('updated', function(){
+    //   thisProduct.processOrder();
+    //   });
                 
-  }
-  //8.7 nowa klasa, nowy konstruktor
-  class amountWidget {
-    constructor(element) {
-      const thisWidget = this;
-      thisWidget.getElements(element);
-      thisWidget.setValue(settings.amountWidget.defaultValue);
-      thisWidget.initActions();
-      console.log('AmountWidget:', thisWidget);
-      console.log('constructor arguments:', element);
+    // }
+    //8.7 nowa klasa, nowy konstruktor
+    // class amountWidget {
+    //   constructor(element) {
+    //     const thisWidget = this;
+    //     thisWidget.getElements(element);
+    //     thisWidget.setValue(settings.amountWidget.defaultValue);
+    //     thisWidget.initActions();
+    //     console.log('AmountWidget:', thisWidget);
+    //     console.log('constructor arguments:', element);
 
-    }
+    //   }
     //8.7 nowy getElements
-    getElements(element){
-      const thisWidget = this;
+    // getElements(element){
+    //   const thisWidget = this;
 
-      thisWidget.element = element;
-      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-    }
+    //   thisWidget.element = element;
+    //   thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+    //   thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+    //   thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    // }
   }
 
   const app = {
