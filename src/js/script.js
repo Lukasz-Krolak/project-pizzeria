@@ -89,6 +89,7 @@
     getElements(){
       const thisProduct = this;
     
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper); //8.6 
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
@@ -169,19 +170,19 @@
         const param = thisProduct.data.params[paramId];
         
         /* START LOOP: for each optionId in param.options */
-        for (let optionID in param.options){
+        for (let optionId in param.options){
           /* save the element in param.options with key optionId as const option */
-          const option = param.options[optionID];
+          const option = param.options[optionId];
           /* START IF: if option is selected and option is not default */
 
           // rozwiązanie problemu co jesli dodatek  jest/ nie jest zaznaczony od razu (...)
-          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionID) > -1;
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           if(optionSelected && !option.default) { 
 
             /* add price of option to variable price */
 
             price += option.price; //dodaje cene dodatku
-            console.log('cena option.price', option.price);
+            console.log('J Cena dodany skl', price, option.price);
             /* END IF: if option is selected and option is not default */
             /* START ELSE IF: if option is not selected and option is default */
 
@@ -189,7 +190,26 @@
 
             /* deduct price of option from price */
             price -= option.price;
-            console.log('John Cena', price);
+            console.log('John Cena zdjęty skl', price, option.price);
+          }
+          const activeImages = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+          console.log('aktywny obrazek',activeImages);
+          //jesli coś wybraliśmy to się obrazek zmieni
+          if (optionSelected){
+            if(!thisProduct.params[paramId]){
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {},
+              };
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
+            for(let activeImage of activeImages) {
+              activeImage.classList.add(classNames.menuProduct.imageVisible);
+            }
+          } else {
+            for (let activeImage of activeImages){
+              activeImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
           }
           /* END ELSE IF: if option is not selected and option is default */
         }
@@ -199,8 +219,8 @@
 
     
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-      thisProduct.priceSingle = price;
-      console.log(price); 
+      // thisProduct.priceSingle = price;
+      // console.log(price); 
       thisProduct.priceElem.innerHTML = thisProduct.price;
       console.log(thisProduct.priceElem);
 
