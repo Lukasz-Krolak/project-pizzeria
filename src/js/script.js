@@ -182,8 +182,8 @@
 
             price += option.price; //dodaje cene dodatku
             console.log('cena option.price', option.price);
-          /* END IF: if option is selected and option is not default */
-          /* START ELSE IF: if option is not selected and option is default */
+            /* END IF: if option is selected and option is not default */
+            /* START ELSE IF: if option is not selected and option is default */
 
           } else if (!optionSelected && option.default){
 
@@ -196,11 +196,14 @@
         /* END LOOP: for each optionId in param.options */
       }
       /* END LOOP: for each paramId in thisProduct.data.params */
-      thisProduct.priceSingle = price; 
-      thisProduct.priceElem.innerHTML = thisProduct.price;
-      console.log(thisProduct.params);
+
     
       /* set the contents of thisProduct.priceElem to be the value of variable price */
+      thisProduct.priceSingle = price;
+      console.log(price); 
+      thisProduct.priceElem.innerHTML = thisProduct.price;
+      console.log(thisProduct.priceElem);
+
     }
                 
   }
