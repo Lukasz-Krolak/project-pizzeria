@@ -103,7 +103,7 @@
       // const accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       /* START: click event listener to trigger */
       
-      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      // thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       thisProduct.accordionTrigger.addEventListener('click',function(event){
 
@@ -220,6 +220,7 @@
 
     
       /* set the contents of thisProduct.priceElem to be the value of variable price */
+      thisProduct.price = price;
       thisProduct.priceSingle = price;
       // console.log(price); 
       thisProduct.priceElem.innerHTML = thisProduct.price;
