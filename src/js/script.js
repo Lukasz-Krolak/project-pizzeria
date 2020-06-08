@@ -158,12 +158,16 @@
       /* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData',formData);
+
       /* set variable price to equal thisProduct.data.price */
+
       let price = thisProduct.data.price; //let bo bedzie sie zmieniac 
+      
       /* START LOOP: for each paramId in thisProduct.data.params */
       for (let paramId in thisProduct.data.params) {
         /* save the element in thisProduct.data.params with key paramId as const param */
         const param = thisProduct.data.params[paramId];
+        
         /* START LOOP: for each optionId in param.options */
         for (let optionID in param.options){
           /* save the element in param.options with key optionId as const option */
@@ -173,11 +177,14 @@
           // rozwiązanie problemu co jesli dodatek  jest/ nie jest zaznaczony od razu (...)
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionID) > -1;
           if(optionSelected && !option.default) { 
+
             /* add price of option to variable price */
+
             price += option.price; //dodaje cene dodatku
             console.log('cena option.price', option.price);
           /* END IF: if option is selected and option is not default */
           /* START ELSE IF: if option is not selected and option is default */
+
           } else if (!optionSelected && option.default){
 
             /* deduct price of option from price */
