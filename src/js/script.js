@@ -88,6 +88,7 @@
     getElements(){
       const thisProduct = this;
     
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem); //8.5
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper); //8.6 
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
@@ -220,7 +221,7 @@
 
     
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-      // thisProduct.priceSingle = price;
+      thisProduct.priceSingle = price;
       // console.log(price); 
       thisProduct.priceElem.innerHTML = thisProduct.price;
       console.log(thisProduct.priceElem);
