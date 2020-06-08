@@ -61,7 +61,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
-      // thisProduct.initAmountWidget(); // 8.7 
+      thisProduct.initAmountWidget(); // 8.7 
       thisProduct.processOrder();
       console.log('new Product', thisProduct);
     }
@@ -220,6 +220,7 @@
 
     
       /* set the contents of thisProduct.priceElem to be the value of variable price */
+      price *= thisProduct.amountWidget.value;
       thisProduct.price = price;
       thisProduct.priceSingle = price;
       // console.log(price); 
@@ -227,35 +228,86 @@
       console.log(thisProduct.priceElem);
 
     }
-    //8.7
-    // initAmountWidget(){
-    //   const thisProduct = this;
-    //   thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
-    //   thisProduct.amountWidgetElem.addEventListener('updated', function(){
-    //   thisProduct.processOrder();
-    //   });
+    initAmountWidget(){
+      const thisProduct = this;
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      //listener 
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
                 
-    // }
-    //8.7 nowa klasa, nowy konstruktor
-    // class amountWidget {
-    //   constructor(element) {
-    //     const thisWidget = this;
-    //     thisWidget.getElements(element);
-    //     thisWidget.setValue(settings.amountWidget.defaultValue);
-    //     thisWidget.initActions();
-    //     console.log('AmountWidget:', thisWidget);
-    //     console.log('constructor arguments:', element);
+    }
+    
+  }
+  //8.7
 
-    //   }
+  //8.7 nowa klasa, nowy konstruktor
+  class AmountWidget {
+    constructor(element) {
+      const thisWidget = this;
+      thisWidget.getElements(element);
+      thisWidget.setValue(settings.amountWidget.defaultValue);
+      thisWidget.initActions();
+      console.log('AmountWidget:', thisWidget);
+      console.log('constructor arguments:', element);
+
+    }
     //8.7 nowy getElements
-    // getElements(element){
-    //   const thisWidget = this;
+    getElements(element){
+      const thisWidget = this;
 
-    //   thisWidget.element = element;
-    //   thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-    //   thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-    //   thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
-    // }
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      console.log('this widget',thisWidget.input);
+      // wartość dla przycisków
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
+    // 8.7 ustawienie wartości value, wartość maks i min
+    setValue(value){
+      const thisWidget = this;
+      let newValue = parseInt(value);
+      /* TODO: Add validation */
+      if(newValue >= 10) {
+        newValue = 10;
+      } else if(newValue <= 1) {
+        newValue = 1;
+      }
+      if((thisWidget.value != newValue) && (newValue >= settings.amountWidget.defaultMin) && (newValue <= settings.amountWidget.defaultMax)) {
+        thisWidget.value = newValue;
+        thisWidget.announce(); //wywolanie announce
+      }
+
+      thisWidget.input.value = thisWidget.value;
+    }
+    //8.7 listenery initAction 
+    initActions() {
+      const thisWidget = this;
+      thisWidget.input.addEventListener('change', function() {
+        thisWidget.setValue(thisWidget.input.value);
+      });
+      // przycisk minus
+      thisWidget.linkDecrease.addEventListener('click', function(event){
+        event.preventDefault();
+        console.log('VALUE:', thisWidget.value);
+        thisWidget.setValue((thisWidget.value) - 1);
+      });
+      // przycisk plus
+      thisWidget.linkIncrease.addEventListener('click', function(event){
+        event.preventDefault();
+        console.log(thisWidget.value);
+        thisWidget.setValue((thisWidget.value) + 1);
+      });
+    }
+
+    announce() {
+      const thisWidget = this;
+
+      const event = new CustomEvent('updated', {
+        bubbles: true
+      });
+      thisWidget.element.dispatchEvent(event);
+    }
   }
 
   const app = {
