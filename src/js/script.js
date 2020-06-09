@@ -268,11 +268,7 @@
       const thisWidget = this;
       let newValue = parseInt(value);
       /* TODO: Add validation */
-      if(newValue >= 10) {
-        newValue = 10;
-      } else if(newValue <= 1) {
-        newValue = 1;
-      }
+
       if((thisWidget.value != newValue) && (newValue >= settings.amountWidget.defaultMin) && (newValue <= settings.amountWidget.defaultMax)) {
         thisWidget.value = newValue;
         thisWidget.announce(); //wywolanie announce
