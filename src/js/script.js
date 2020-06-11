@@ -282,7 +282,7 @@
         thisProduct.processOrder();
       });        
     }
-    //9.3
+    //9.3 uproszczenie / wyciągnięcie danych
     addToCart(){
       const thisProduct = this;
       thisProduct.name = thisProduct.data.name;
@@ -376,6 +376,7 @@
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      
     
     }
     initActions(){
@@ -383,6 +384,15 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function(event){
         event.preventDefault();
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+      });
+      thisCart.dom.productList.addEventListener('updated', function () {
+        thisCart.update();
+      });
+      thisCart.dom.productList.addEventListener('remove', function () {
+        thisCart.remove(event.detail.cartProduct);
+      });
+      thisCart.dom.productList.addEventListener('updated', function(){
+        thisCart.update();
       });
     }
     //9.3 powienie się produktu w koszyku, z poprawnymi informacjami
@@ -394,7 +404,6 @@
       console.log('THISCARTPRODUCTLIST', thisCart.dom.productList);
       const cartContainer = document.querySelector(select.containerOf.menu);
       cartContainer.appendChild(thisCart.dom.productList);
-
     }
 
   }
