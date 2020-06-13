@@ -396,8 +396,6 @@
       thisCart.products.splice(index, 1);
       cartProduct.dom.wrapper.remove();
       this.update();
-    
-
     }
 
     //9.3 powienie się produktu w koszyku, z poprawnymi informacjami
@@ -411,7 +409,6 @@
       thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       console.log('thisCart.products', thisCart.products);
       thisCart.update();//9.4
-      thisCart.remove();//9.5
     }
 
     //9.4 wyswietlanie aktualnych sum-- błąd update, błąd nie ta klasa
