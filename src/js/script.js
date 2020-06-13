@@ -386,7 +386,17 @@
       thisCart.dom.productList.addEventListener('remove', function () {
         thisCart.remove(event.detail.cartProduct);
       });
-      
+    }
+    //9.5 remove is not a function? błąd nie może przeczytać "dom"
+    remove(cartProduct) {
+      const thisCart = this;
+      console.log(thisCart.products);
+      //9.5 tiaaa
+      const index = thisCart.products.indexOf(cartProduct);
+      thisCart.products.splice(index, 1);
+      cartProduct.dom.wrapper.remove();
+      this.update();
+    
 
     }
 
@@ -432,15 +442,7 @@
       console.log('subtotalPrice', thisCart.subtotalPrice);
       console.log('thisCart.totalPrice', thisCart.totalPrice);
     }
-    //9.5 remove is not a function? błąd nie może przeczytać "dom"
-    remove(cartProduct) {
-      const thisCart = this;
-      console.log(thisCart.products);
-      const index = thisCart.products.indexOf(cartProduct);
-      thisCart.products.splice(index, 1);
-      cartProduct.dom.wrapper.remove();
-      this.update();
-    }
+
   }
   //9.4 klasa pozwalajaca na funkcjonowanie pojedynczych pozycji w koszyku
   class CartProduct {
