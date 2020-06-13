@@ -402,8 +402,8 @@
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       console.log('GENERATEDDOM', generatedDOM);
       console.log('THISCARTPRODUCTLIST', thisCart.dom.productList);
-      const cartContainer = document.querySelector(select.containerOf.menu);
-      cartContainer.appendChild(thisCart.dom.productList);
+      const productList = thisCart.dom.productList;
+      productList.appendChild(generatedDOM);
     }
 
   }
