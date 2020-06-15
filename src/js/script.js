@@ -307,7 +307,7 @@
       thisWidget.element = element;
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       console.log('this widget',thisWidget.input);
-      // wartość dla przycisków
+      // wartość dla przycisków plus i minus
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
     }
@@ -421,12 +421,13 @@
         totalNumber: thisCart.totalNumber,
         subtotalPrice: thisCart.subtotalPrice,
         deliveryFee: thisCart.deliveryFee,
-        products: []
+        products: {},
 
       };
 
-      for (var product in thisCart.products) {
+      for (const product of thisCart.products) {
         payload.products = product.getData();
+        // payload.products.push(product);//wysłać bo nie wysyła, 
       }
       const options = {
         method: 'POST',
