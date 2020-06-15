@@ -416,8 +416,8 @@
 
       const payload = {
         totalPrice: thisCart.totalPrice,
-        telephone: thisCart.dom.phone,
-        address: thisCart.dom.address,
+        telephone: thisCart.dom.phone.value,
+        address: thisCart.dom.address.value,
         totalNumber: thisCart.totalNumber,
         subtotalPrice: thisCart.subtotalPrice,
         deliveryFee: thisCart.deliveryFee,
