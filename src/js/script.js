@@ -283,8 +283,6 @@
       thisProduct.amount = thisProduct.amountWidget.value;
       app.cart.add(thisProduct);
     }
-
-
     
   }
   //8.7
@@ -295,6 +293,7 @@
       const thisWidget = this;
       thisWidget.getElements(element);
       thisWidget.setValue(settings.amountWidget.defaultValue);
+      thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
@@ -316,8 +315,8 @@
       const thisWidget = this;
       let newValue = parseInt(value);
       /* TODO: Add validation */
-
-      if((thisWidget.value != newValue) && (newValue >= settings.amountWidget.defaultMin) && (newValue <= settings.amountWidget.defaultMax)) {
+      // if((thisWidget.value != newValue) && (newValue >= settings.amountWidget.defaultMin) && (newValue <= settings.amountWidget.defaultMax)) {
+      if((thisWidget.value != newValue) && (newValue >= thisWidget.input.defaultMin) && (newValue <= thisWidget.input.defaultMax)) {
         thisWidget.value = newValue;
         thisWidget.announce(); //wywolanie announce
       }
