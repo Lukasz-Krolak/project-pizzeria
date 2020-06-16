@@ -315,9 +315,9 @@
       const thisWidget = this;
       let newValue = parseInt(value);
       /* TODO: Add validation */
-      // if((thisWidget.value != newValue) && (newValue >= settings.amountWidget.defaultMin) && (newValue <= settings.amountWidget.defaultMax)) {
-      if((thisWidget.value != newValue) && (newValue >= thisWidget.input.defaultMin) && (newValue <= thisWidget.input.defaultMax)) {
+      if((thisWidget.value != newValue) && (newValue >= settings.amountWidget.defaultMin) && (newValue <= settings.amountWidget.defaultMax)) {
         thisWidget.value = newValue;
+        
         thisWidget.announce(); //wywolanie announce
       }
 
