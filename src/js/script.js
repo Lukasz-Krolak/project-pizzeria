@@ -292,7 +292,7 @@
     constructor(element) {
       const thisWidget = this;
       thisWidget.getElements(element);
-      thisWidget.setValue(settings.amountWidget.defaultValue);
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
       console.log('AmountWidget:', thisWidget);
@@ -315,9 +315,9 @@
       const thisWidget = this;
       let newValue = parseInt(value);
       /* TODO: Add validation */
-      if((thisWidget.value != newValue) && (newValue >= settings.amountWidget.defaultMin) && (newValue <= settings.amountWidget.defaultMax)) {
+      if(thisWidget.value != newValue && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
         thisWidget.value = newValue;
-        
+
         thisWidget.announce(); //wywolanie announce
       }
 
@@ -420,13 +420,12 @@
         totalNumber: thisCart.totalNumber,
         subtotalPrice: thisCart.subtotalPrice,
         deliveryFee: thisCart.deliveryFee,
-        products: {},
+        products: [],
 
       };
 
       for (const product of thisCart.products) {
-        payload.products = product.getData();
-        // payload.products.push(product);//wysłać bo nie wysyła, 
+        payload.products.push(product.getData);
       }
       const options = {
         method: 'POST',
