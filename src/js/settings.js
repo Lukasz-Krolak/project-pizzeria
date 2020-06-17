@@ -1,4 +1,4 @@
-import {Handlebars} from './settings.js';
+import {Handlebars} from './utils.js';
 const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
