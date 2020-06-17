@@ -62,4 +62,4 @@ const app = {
      
   },
 };
-  
+app.init();
