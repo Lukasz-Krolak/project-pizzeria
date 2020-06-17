@@ -1,5 +1,5 @@
 //10.1
-import {settings,select,classNames,templates} from '../settings.js';
+import {settings, select, classNames, templates} from '../settings.js';
 import utils from '../utils.js';
 import CartProduct from './CartProduct.js';
 
