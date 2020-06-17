@@ -1,5 +1,6 @@
-import {Handlebars} from './utils.js';
-const select = {
+//10.1
+/* global Handlebars */
+export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product', // CODE ADDED
