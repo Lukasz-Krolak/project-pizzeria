@@ -1,7 +1,11 @@
 //10.1
+// import {select, classNames, templates} from '../settings.js';
+// import utils from '../utils.js';
+// import AmountWidget from './AmountWidget.js';
 import {select, classNames, templates} from '../settings.js';
 import utils from '../utils.js';
 import AmountWidget from './AmountWidget.js';
+
 
 class Product{
   constructor(id, data){
@@ -205,4 +209,5 @@ class Product{
   }
     
 }
+
 export default Product;
