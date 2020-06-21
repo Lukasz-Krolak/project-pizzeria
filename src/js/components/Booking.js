@@ -3,6 +3,7 @@ import { templates, select } from '../settings.js';
 
 //10.2
 import  AmountWidget  from './AmountWidget.js';
+import datePicker from './DatePicker.js';
 
 
 //10.2.2 Add Class Booking with constructor,  
@@ -29,6 +30,8 @@ class Booking{
     thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
     thisBooking.dom.table = thisBooking.dom.wrapper.querySelectorAll(select.booking.table);
+    //10.3
+    thisBooking.dom.datePicker = select.widgets.datePicker.querySelector(maxDaysInFuture);
   }
 
   initWidgets() {
@@ -37,6 +40,7 @@ class Booking{
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
     // thisBooking.dom.table = new AmountWidget(thisBooking.dom.table);
+    thisBooking.datePicker = new AmountWidget(thisBooking.dom.datePicker); // 10.3
 
   }
 }
