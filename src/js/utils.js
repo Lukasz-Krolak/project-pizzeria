@@ -1,12 +1,12 @@
 /* global Handlebars, dataSource */
 export const utils = {};
-utils.createDOMFromHTML = function(htmlString) {
+utils.createDOMFromHTML = function (htmlString) {
   let div = document.createElement('div');
   div.innerHTML = htmlString.trim();
   return div.firstChild;
 };
-utils.createPropIfUndefined = function(obj, key, value = []){
-  if(!obj.hasOwnProperty(key)){
+utils.createPropIfUndefined = function (obj, key, value = []) {
+  if (!obj.hasOwnProperty(key)) {
     obj[key] = value;
   }
 };
@@ -40,12 +40,17 @@ utils.queryParams = function(params){
 
 utils.convertDataSourceToDbJson = function(){
   const productJson = [];
-  for(let key in dataSource.products){
-    productJson.push(Object.assign({id: key}, dataSource.products[key]));
+  
+  for (let key in dataSource.products) {
+    productJson.push(Object.assign({
+      id: key
+    }, dataSource.products[key]));
   }
-  console.log(JSON.stringify({product: productJson, order: []}, null, '  '));
+  console.log(JSON.stringify({
+    product: productJson,
+    order: []
+  }, null, '  '));
 };
-
 utils.numberToHour = function(number){
   return (Math.floor(number) % 24) + ':' + (number % 1 * 60 + '').padStart(2, '0');
 };

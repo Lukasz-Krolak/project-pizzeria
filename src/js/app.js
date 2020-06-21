@@ -1,9 +1,19 @@
 //10.1
-import {settings, select, classNames,} from './settings.js';
+import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
+import Booking from './components/Booking.js'; //10.2.1
 
 const app = {
+  init: function(){
+    const thisApp = this;
+ 
+    thisApp.initCart(); //9
+    thisApp.initData();
+    // thisApp.initMenu();//9.7
+    thisApp.initPages(); //10.2
+    thisApp.initBooking(); //10.2.1
+  },
   initPages: function() {
     const thisApp = this;
     console.log(thisApp.pages);
@@ -23,7 +33,7 @@ const app = {
       }
     }
     thisApp.activatePage(pageMatchingHash);
-    // thisApp.activatePage(thisApp.pages[0].id); //czemu [0] - jak to działa
+  
    
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function (event) {
@@ -54,6 +64,13 @@ const app = {
         link.getAttribute('href') == '#' + pageId
       );
     }
+  },
+  initBooking: function(){ //10.2.1
+    const thisApp = this;
+
+    const bookingElement = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking (bookingElement);
+
   },
 
  
@@ -88,20 +105,7 @@ const app = {
     console.log('thisApp.data', JSON.stringify(thisApp.data));
       
   },
-  init: function(){
-    const thisApp = this;
-    // console.log('*** App starting ***');
-    // console.log('thisApp:', thisApp);
-    // console.log('classNames:', classNames);
-    // console.log('settings:', settings);
-    // console.log('templates:', templates);
-    thisApp.initPages(); //10.2
-    
-    thisApp.initCart(); //9
-    thisApp.initData();
-    // thisApp.initMenu();//9.7
-    
-  },
+
   // 9 inicjacja cart!!!!!! w app pod initMenu!!!!!
   initCart: function(){
     const thisApp = this;
