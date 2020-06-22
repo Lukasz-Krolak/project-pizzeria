@@ -12,8 +12,8 @@ class AmountWidget extends BaseWidget {
     // thisWidget.setValue(thisWidget.dom.input.value); //10.3
     
     thisWidget.initActions();
-    console.log('AmountWidget:', thisWidget);
-    console.log('constructor arguments:', element);
+    // console.log('AmountWidget:', thisWidget);
+    // console.log('constructor arguments:', element);
 
   }
   //8.7 nowy getElements
