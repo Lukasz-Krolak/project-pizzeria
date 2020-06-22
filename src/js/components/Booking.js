@@ -12,6 +12,7 @@ class Booking{
   constructor(bookingElement) {
     //stała
     const thisBooking = this;
+
     //init methods render and initWidgets 10.2.3
     thisBooking.render(bookingElement);
     thisBooking.initWidgets();
@@ -32,7 +33,7 @@ class Booking{
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     //10.3
-    thisBooking.dom.datePicker = new DatePicker(select.widgets.datePicker.wrapper); // nie jestem pewny czy maxDaysInFuture raczej wraper
+    thisBooking.dom.datePicker = new DatePicker(select.widgets.datePicker.wrapper); 
     thisBooking.dom.hourPicker = new HourPicker(select.widgets.hourPicker.wrapper);
     
   }
