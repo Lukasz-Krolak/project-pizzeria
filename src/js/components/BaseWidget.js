@@ -30,7 +30,7 @@ class BaseWidget {
   }
   setValue(value){
     const thisWidget = this;
-    thisWidget.value = value;
+    thisWidget.input.value = value;
   }
   parseValue(value) {
     return parseInt(value);
@@ -51,6 +51,7 @@ class BaseWidget {
     const event = new CustomEvent('updated', {
       bubbles: true
     });
+    console.log('dispatchEvent',thisWidget.dom.wrapper);
     thisWidget.dom.wrapper.dispatchEvent(event);
   }
 

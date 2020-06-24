@@ -39,6 +39,10 @@ export const select = {
       input: 'input[type="range"]',
       output: '.output',
     },
+    button: {
+      submit: '.btn-secondary'//submit
+    },
+    
   },
   cart: {
     productList: '.cart__order-summary',
@@ -62,6 +66,7 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+     
   },
   nav: {
     links: '.main-nav a',

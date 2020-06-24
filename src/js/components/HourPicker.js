@@ -9,7 +9,7 @@ class HourPicker extends BaseWidget{
   //10.2.2 Add Class Booking with constructor,  
 
   constructor(wrapper) {
-    super(wrapper,settings.hours.open);
+    super(wrapper, settings.hours.open);
     
     const thisWidget = this;
     
@@ -29,7 +29,8 @@ class HourPicker extends BaseWidget{
     
     rangeSlider.create(thisWidget.dom.input);
     thisWidget.dom.input.addEventListener('input', function () {
-      thisWidget.value = thisWidget.dom.input;
+      thisWidget.value = thisWidget.dom.input.value;
+      
     });
  
   }

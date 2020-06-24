@@ -36,7 +36,7 @@ class Booking{
     console.log('this BOOOOOKING',select.widgets.datePicker.wrapper);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper); 
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
-    // thisBooking.dom.submit.getElement 
+    thisBooking.dom.submit = thisBooking.dom.wrapper.querySelector(select.widgets.button.submit);
   
   }
 
@@ -52,10 +52,12 @@ class Booking{
     thisBooking.dom.datePicker.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
-    thisBooking.dom.submit.addEventListener('click', function(event){
-      event.preventDefault();
-      thisBooking.sendReservation();
-    });
+    //11
+    // console.log(thisBooking.dom.submit);
+    // thisBooking.dom.submit.addEventListener('click', function(event){
+    //   event.preventDefault();
+    //   thisBooking.sendReservation();
+    // });
 
     // thisBooking.checkTables();
   }

@@ -17,7 +17,7 @@ class Product{
     thisProduct.initOrderForm();
     thisProduct.initAmountWidget(); // 8.7 
     thisProduct.processOrder();
-    console.log('new Product', thisProduct);
+ 
   }
   renderInMenu(){
     const thisProduct = this;
@@ -25,7 +25,7 @@ class Product{
     /*generate HTML based on template */
 
     const generatedHTML = templates.menuProduct(thisProduct.data);
-    // console.log(gene)
+     
     /* create element usign utils.createElementFromHTML */
 
     thisProduct.element = utils.createDOMFromHTML(generatedHTML);
@@ -68,7 +68,7 @@ class Product{
       thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       /* find all active products */
       const activeElements = document.querySelectorAll('.product.active');
-      console.log(activeElements);
+      
       /* START LOOP: for each active product */
       for (const activeElement of activeElements){
 
@@ -113,7 +113,7 @@ class Product{
     thisProduct.params = {};
     /* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
     const formData = utils.serializeFormToObject(thisProduct.form);
-    console.log('formData',formData);
+     
 
     /* set variable price to equal thisProduct.data.price */
     thisProduct.params = {};//9.3
@@ -137,7 +137,7 @@ class Product{
           /* add price of option to variable price */
 
           price += option.price; //dodaje cene dodatku
-          console.log('J Cena dodany skl', price, option.price);
+           
           /* END IF: if option is selected and option is not default */
           /* START ELSE IF: if option is not selected and option is default */
 
@@ -145,11 +145,11 @@ class Product{
 
           /* deduct price of option from price */
           price -= option.price;
-          console.log('John Cena zdjęty skl', price, option.price);
+          
         }
         //stworzona stała 8.6
         const activeImages = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
-        console.log('aktywny obrazek',activeImages);
+         
           
         //jesli coś wybraliśmy to się obrazek zmieni 8,6
         if(optionSelected) {
@@ -180,7 +180,7 @@ class Product{
 
     /* set the contents of thisProduct.priceElem to be the value of variable price */
     thisProduct.priceElem.innerHTML = thisProduct.price;
-    console.log('thisproductparams',thisProduct.params);
+    
   }
   initAmountWidget(){
     const thisProduct = this;
