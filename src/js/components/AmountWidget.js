@@ -51,7 +51,7 @@ class AmountWidget extends BaseWidget {
     thisWidget.dom.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
       console.log('VALUE:', thisWidget.value);
-      thisWidget.setValue(thisWidget.dom.input.value - 1);
+      thisWidget.setValue(thisWidget.value - 1);
     });
     // przycisk plus
     thisWidget.dom.linkIncrease.addEventListener('click', function(event){
