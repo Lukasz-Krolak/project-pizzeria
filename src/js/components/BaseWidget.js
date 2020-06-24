@@ -18,7 +18,7 @@ class BaseWidget {
   set value(value){
     const thisWidget = this;
 
-    let newValue = thisWidget.parseValue(value);
+    const newValue = thisWidget.parseValue(value);
     /* TODO: Add validation */
     if(thisWidget.correctValue != newValue && thisWidget.isValid(newValue)) {
       thisWidget.correctValue = newValue;
@@ -30,7 +30,13 @@ class BaseWidget {
   }
   setValue(value){
     const thisWidget = this;
-    thisWidget.input.value = value;
+    const newValue = thisWidget.parseValue(value);
+    // thisWidget.input.value = value;
+    if(newValue !=thisWidget.value && thisWidget.isValid(newValue)){
+      thisWidget.correctValue = newValue;
+      thisWidget.announce();
+    }
+    thisWidget.renderValue();
   }
   parseValue(value) {
     return parseInt(value);
@@ -42,7 +48,7 @@ class BaseWidget {
   renderValue(){
     const thisWidget = this;
 
-    thisWidget.dom.wrapper.innerHTML = thisWidget.correctValue;
+    thisWidget.dom.wrapper.innerHTML = thisWidget.value;
 
   }
   announce() {

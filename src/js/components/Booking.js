@@ -52,7 +52,6 @@ class Booking{
     thisBooking.dom.datePicker.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
-    //11
     // console.log(thisBooking.dom.submit);
     // thisBooking.dom.submit.addEventListener('click', function(event){
     //   event.preventDefault();

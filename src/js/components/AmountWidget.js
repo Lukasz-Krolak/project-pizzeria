@@ -12,9 +12,7 @@ class AmountWidget extends BaseWidget {
     // thisWidget.setValue(thisWidget.dom.input.value); //10.3
     
     thisWidget.initActions();
-    // console.log('AmountWidget:', thisWidget);
-    // console.log('constructor arguments:', element);
-
+    console.log('amountWidget',thisWidget);
   }
   //8.7 nowy getElements
   getElements(){
@@ -22,7 +20,7 @@ class AmountWidget extends BaseWidget {
 
     // thisWidget.dom.wrapper = element;// 10.3
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.amount.input);
-    console.log('this widget',thisWidget.dom.input);
+   
     // wartość dla przycisków plus i minus
     thisWidget.dom.linkDecrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkDecrease);
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);

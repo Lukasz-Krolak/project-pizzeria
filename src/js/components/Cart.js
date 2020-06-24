@@ -102,11 +102,10 @@ class Cart{
     const thisCart = this;
     const generatedHTML = templates.cartProduct(menuProduct);
     const generatedDOM = utils.createDOMFromHTML(generatedHTML);
-    console.log('GENERATEDDOM', generatedDOM);
-    console.log('THISCARTPRODUCTLIST', thisCart.dom.productList);
+  
     thisCart.dom.productList.appendChild(generatedDOM);
     thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
-    console.log('thisCart.products', thisCart.products);
+
     thisCart.update();//9.4
   }
 
@@ -115,7 +114,7 @@ class Cart{
     const thisCart = this;
     thisCart.totalNumber = 0;
     thisCart.subtotalPrice = 0;
-    console.log('thisCart.deliveryFee!!!', thisCart.deliveryFee);
+  
 
     for (let product of thisCart.products) {
       thisCart.subtotalPrice += product.price;
