@@ -15,19 +15,20 @@ class BaseWidget {
   }
   // 8.7 ustawienie wartości value, wartość maks i min
   //10.3 setter
-  set value(value){
-    const thisWidget = this;
+  // set value(value){
+  //   const thisWidget = this;
 
-    const newValue = thisWidget.parseValue(value);
-    /* TODO: Add validation */
-    if(thisWidget.correctValue != newValue && thisWidget.isValid(newValue)) {
-      thisWidget.correctValue = newValue;
+  //   const newValue = thisWidget.parseValue(value);
+  //   thisWidget.input.value = value;
+  //   /* TODO: Add validation */
+  //   if(thisWidget.correctValue != newValue && thisWidget.isValid(newValue)) {
+  //     thisWidget.correctValue = newValue;
 
-      thisWidget.announce(); //wywolanie announce
-    }
+  //     thisWidget.announce(); //wywolanie announce
+  //   }
 
-    thisWidget.renderValue();
-  }
+  //   thisWidget.renderValue();
+  // }
   setValue(value){
     const thisWidget = this;
     const newValue = thisWidget.parseValue(value);
