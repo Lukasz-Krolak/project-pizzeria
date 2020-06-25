@@ -28,16 +28,12 @@ class BaseWidget {
 
     thisWidget.renderValue();
   }
-  // setValue(value){
-  //   const thisWidget = this;
-  //   const newValue = thisWidget.parseValue(value);
-  //   // thisWidget.input.value = value;
-  //   if(newValue !=thisWidget.value && thisWidget.isValid(newValue)){
-  //     thisWidget.correctValue = newValue;
-  //     thisWidget.announce();
-  //   }
-  //   thisWidget.renderValue();
-  // }
+  setValue(value){
+    const thisWidget = this;
+
+    thisWidget.value = value;
+
+  }
   parseValue(value) {
     return parseInt(value);
   }
