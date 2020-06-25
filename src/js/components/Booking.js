@@ -46,19 +46,12 @@ class Booking{
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new HourPicker(thisBooking.dom.hourPicker);
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker); // 10.3
-    thisBooking.dom.hourPicker.addEventListener('updated', function(){
-      thisBooking.updateDOM();
-    });
-    thisBooking.dom.datePicker.addEventListener('updated', function(){
-      thisBooking.updateDOM();
-    });
-    // console.log(thisBooking.dom.submit);
-    // thisBooking.dom.submit.addEventListener('click', function(event){
-    //   event.preventDefault();
-    //   thisBooking.sendReservation();
+    // thisBooking.dom.hourPicker.addEventListener('updated', function(){
+    //   thisBooking.updateDOM(thisBooking.dom.hourPicker.value);
     // });
-
-    // thisBooking.checkTables();
+    // thisBooking.dom.datePicker.addEventListener('updated', function(){
+    //   thisBooking.updateDOM(thisBooking.dom.datePicker);
+    // });
   }
 }
 

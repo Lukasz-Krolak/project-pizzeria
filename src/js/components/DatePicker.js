@@ -36,10 +36,11 @@ class DatePicker extends BaseWidget{
         },
       ],
       'locale': {
-        'firstDayOfWeek': 2,
+        firstDayOfWeek: 1,
       },
       //w momencie wykrycia zmian przypisujemy wartosć
       onChange: function(selectedDates, dateStr) {
+        console.log('datestr',dateStr);
         thisWidget.value = dateStr;
       },
     });
@@ -47,13 +48,14 @@ class DatePicker extends BaseWidget{
   parseValue(value) {
     return value;
   }
-
   isValid() {
     return true;
   }
-
   renderValue() {
-
+    const thisWidget = this;
+    // widocznosć godziny po uruchomieniu
+    console.log('renderrrrr',thisWidget.dom.value);
+    thisWidget.dom.input.innerHTML = thisWidget.value;
   }
 }
 export default DatePicker;
