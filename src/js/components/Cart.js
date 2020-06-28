@@ -14,7 +14,6 @@ class Cart{
     thisCart.getElements(element);
     thisCart.initActions();
 
-    console.log('new Cart', thisCart);
   }
   getElements(element) {
     const thisCart = this;
@@ -53,7 +52,6 @@ class Cart{
   //9.5 remove is not a function? błąd nie może przeczytać "dom"
   remove(cartProduct) {
     const thisCart = this;
-    console.log(thisCart.products);
     //9.5 tiaaa
     const index = thisCart.products.indexOf(cartProduct);
     thisCart.products.splice(index, 1);
@@ -77,7 +75,6 @@ class Cart{
     };
 
     for (const product of thisCart.products) {
-      console.log('prOOOduct',product);
       payload.products.push(product.getData());
     }
     const options = {
@@ -132,10 +129,6 @@ class Cart{
         elem.innerHTML = thisCart[key];
       }
     }
-
-    console.log('totalNumber', thisCart.totalNumber);
-    console.log('subtotalPrice', thisCart.subtotalPrice);
-    console.log('thisCart.totalPrice', thisCart.totalPrice);
   }
 
 }
