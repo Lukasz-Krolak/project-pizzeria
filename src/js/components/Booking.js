@@ -65,8 +65,7 @@ class Booking{
           eventsRepeatResponse.json(),
           console.log('B',bookingsResponse),
           console.log('R',eventsRepeatResponse),
-        ]);
-        
+        ]); 
       })
       .then(function([bookings, eventsCurrent, eventsRepeat]){
         console.log('bookings', bookings);
@@ -99,7 +98,7 @@ class Booking{
         }
       }
     }
-    //console.log('thisBooking.booked',thisBooking.booked);
+    console.log('thisBooking.booked',thisBooking.booked);
     thisBooking.updateDOM();
   }
   makeBooked(date, hour, duration, table){
@@ -112,17 +111,19 @@ class Booking{
     // pętla z iteratorem
     for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5){
       // console.log('thisBooking.booked',thisBooking.booked); tu może być błąd startHour a HourBlock
-      if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
-        thisBooking.booked[date][hourBlock] = [];  
+      if(typeof thisBooking.booked[date][startHour] == 'undefined'){
+        thisBooking.booked[date][startHour] = [];  
       }
-      thisBooking.booked[date][hourBlock].push(table);
+      thisBooking.booked[date][startHour].push(table);
     }
   }
+
   updateDOM(){
     const thisBooking = this;
     thisBooking.date = thisBooking.datePicker.value;
-    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-    
+    console.log('DPv',thisBooking.datePicker.value);
+    thisBooking.hour = utils.numberToHour(thisBooking.hourPicker.value);
+    console.log('HPv',thisBooking.hourPicker.value);
       
     let allAvaible = false;
     if(
