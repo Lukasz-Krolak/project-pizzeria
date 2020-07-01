@@ -66,7 +66,10 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
-     
+    phone: '.booking-form [name="phone"]',
+    address: '.booking-form [name="address"]',
+    starters: '.booking-form [type="checkbox"]',
+    form: '.booking-form',
   },
   nav: {
     links: '.main-nav a',
@@ -111,6 +114,7 @@ export const settings = {
   },
   booking: {
     tableIdAttribute: 'data-table',
+    submit: 'btn-secondary',
   },
   db: {
     url: '//localhost:3131',
