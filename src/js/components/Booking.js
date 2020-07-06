@@ -248,9 +248,8 @@ class Booking{
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
-        thisBooking.makeBooked(parsedResponse);
+        // thisBooking.makeBooked(parsedResponse);
       });
-  
   }
   initActions(){
     const thisBooking = this;
@@ -264,20 +263,22 @@ class Booking{
   //selectTable klikniety na stronie "aktywny"
   selectTable() {
     const thisBooking = this;
+    //jesli obiekt dom.tamble ma klase booked, zablokuj bookedActiv
+
     for (let table of thisBooking.dom.tables) {
+
       table.addEventListener('click', function () {
         table.classList.add(classNames.booking.tableBookedActiv);
         console.log('table',table.classList);
         
-        if(table != tableSelectedId)
+        if(table != tableSelectedId) {
           table.classList.remove(classNames.booking.tableBookedActiv);
-        
-        
-
-        //jesli obiekt dom.tamble ma klase booked, zablokuj bookedActiv
+        }
         const tableSelectedId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
         console.log('tableSelected', tableSelectedId);
         thisBooking.tableSelected = tableSelectedId;
+
+
       });
     }
 
