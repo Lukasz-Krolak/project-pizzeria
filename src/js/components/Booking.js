@@ -137,6 +137,7 @@ class Booking{
     }
     for(let table of thisBooking.dom.tables){
       let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      console.log(settings.booking.tableIdAttribute);
       if(!isNaN(tableId)){
         tableId = parseInt(tableId);
       }
@@ -266,12 +267,15 @@ class Booking{
     //jesli obiekt dom.tamble ma klase booked, zablokuj bookedActiv
 
     for (let table of thisBooking.dom.tables) {
-      
+      const tableId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
       table.addEventListener('click', function () {
-        table.classList.add(classNames.booking.tableBookedActiv);
         console.log('table',table);
-        const tableSelectedId = thisBooking.dom.tableBookedActiv.getAttribute(settings.booking.tableIdAttribute);
-        if(table != tableSelectedId) {
+        table.classList.add(classNames.booking.tableBookedActiv);
+        
+        const tableSelectedId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+        
+        console.log('tableSelectedId',tableSelectedId);
+        if(tableId != tableSelectedId) {
           table.classList.remove(classNames.booking.tableBookedActiv);
         }
      
