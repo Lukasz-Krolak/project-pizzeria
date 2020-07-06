@@ -137,7 +137,7 @@ class Booking{
     }
     for(let table of thisBooking.dom.tables){
       let tableId = table.getAttribute(settings.booking.tableIdAttribute);
-      console.log(settings.booking.tableIdAttribute);
+      console.log('tableId update',settings.booking.tableIdAttribute);
       if(!isNaN(tableId)){
         tableId = parseInt(tableId);
       }
@@ -222,7 +222,7 @@ class Booking{
     const payload = {
       date: thisBooking.datePicker.value,
       hour: thisBooking.hourPicker.value,
-      table: thisBooking.tableSelectedId,
+      table: thisBooking.tableSelected,
       duration: thisBooking.hoursAmount.value,
       ppl: thisBooking.peopleAmount.value,
       starters: [],
@@ -249,7 +249,7 @@ class Booking{
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
-        // thisBooking.makeBooked(parsedResponse);
+        thisBooking.makeBooked(parsedResponse);
       });
   }
   initActions(){
@@ -267,19 +267,25 @@ class Booking{
     //jesli obiekt dom.tamble ma klase booked, zablokuj bookedActiv
 
     for (let table of thisBooking.dom.tables) {
-      const tableId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+      let tableId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
       table.addEventListener('click', function () {
         console.log('table',table);
-        table.classList.add(classNames.booking.tableBookedActiv);
+        table.classList.add(classNames.booking.tableBookedActive);
         
-        const tableSelectedId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+        let tableSelected = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
         
-        console.log('tableSelectedId',tableSelectedId);
-        if(tableId != tableSelectedId) {
-          table.classList.remove(classNames.booking.tableBookedActiv);
+        console.log('tableSelectedId',tableSelected);
+        console.log('tableId', tableId);
+        if(tableId != tableSelected) {
+          table.classList.remove(classNames.booking.tableBookedActive);
+          tableSelected = parseInt(table.removeAttribute(settings.booking.tableIdAttribute));
+        } else {
+          table.addEventListener('click', function () {
+            console.log('table',table);
+            table.classList.remove(classNames.booking.tableBookedActive);
+          });
         }
-     
-        thisBooking.tableSelected = tableSelectedId;
+        thisBooking.tableSelected = tableSelected;
 
 
       });
