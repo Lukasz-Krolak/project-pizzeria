@@ -12,6 +12,7 @@ const app = {
     // thisApp.initMenu();//9.7
     thisApp.initPages(); //10.2
     thisApp.initBooking(); //10.2.1
+    // thisApp.initCarousel();//11.3
   },
   initPages: function() {
     const thisApp = this;
@@ -19,7 +20,6 @@ const app = {
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
     const idFromHash = window.location.hash.replace('#/', '');
     let pageMatchingHash = thisApp.pages[0].id; // wczesniej false
-
     for (let page of thisApp.pages) {
       if (page.id == idFromHash) {
         pageMatchingHash = page.id;
@@ -82,6 +82,11 @@ const app = {
       });
       
   },
+  //karuzela
+  // initCarousel: function () {
+
+
+  // },
 
   // 9 inicjacja cart!!!!!! w app pod initMenu!!!!!
   initCart: function(){

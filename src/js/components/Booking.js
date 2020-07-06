@@ -18,6 +18,7 @@ class Booking{
     thisBooking.render(bookingElement);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.selectTable();
     // thisBooking.initActions();
   }
   //11.1
@@ -108,11 +109,12 @@ class Booking{
     if(typeof thisBooking.booked[date] == 'undefined'){
       thisBooking.booked[date] = {};
     }
+    console.log('undefhour', hour);
     const startHour = utils.hourToNumber(hour);
 
     // pętla z iteratorem
     for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5){
-      // console.log('thisBooking.booked',thisBooking.booked); tu musi byc HourBlock
+      
       if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
         thisBooking.booked[date][hourBlock] = [];  
       }
@@ -123,7 +125,7 @@ class Booking{
   updateDOM(){
     const thisBooking = this;
     thisBooking.date = thisBooking.datePicker.value;
-    thisBooking.hour = utils.numberToHour(thisBooking.hourPicker.value);
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
       
     let allAvailable = false;
     if(
@@ -141,7 +143,7 @@ class Booking{
       if(
         !allAvailable
         &&
-        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId) > -1 //srawdzenie czy elemnt tableId znajduje sie w tablicy
+        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId) //srawdzenie czy elemnt tableId znajduje sie w tablicy
       ){
         table.classList.add(classNames.booking.tableBooked);
       } else {
@@ -246,18 +248,40 @@ class Booking{
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
+        thisBooking.makeBooked(parsedResponse);
       });
   
   }
-  // initActions(){
-  //   const thisBooking = this;
+  initActions(){
+    const thisBooking = this;
 
-  //   thisBooking.dom.form.addEventListener('submit', function(){
-  //     event.preventDefault();
-  //     thisBooking.sendReservation();
-  //     console.log('submit',thisBooking.sendReservation());
-  //   });
-  // }
+    thisBooking.dom.form.addEventListener('submit', function(){
+      event.preventDefault();
+      thisBooking.sendReservation();
+      console.log('submit',thisBooking.sendReservation());
+    });
+  }
+  //selectTable klikniety na stronie "aktywny"
+  selectTable() {
+    const thisBooking = this;
+    for (let table of thisBooking.dom.tables) {
+      table.addEventListener('click', function () {
+        table.classList.add(classNames.booking.tableBookedActiv);
+        console.log('table',table.classList);
+        
+        if(table != tableSelectedId)
+          table.classList.remove(classNames.booking.tableBookedActiv);
+        
+        
+
+        //jesli obiekt dom.tamble ma klase booked, zablokuj bookedActiv
+        const tableSelectedId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+        console.log('tableSelected', tableSelectedId);
+        thisBooking.tableSelected = tableSelectedId;
+      });
+    }
+
+  }
 }
 
 export default Booking;
