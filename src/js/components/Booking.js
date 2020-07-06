@@ -266,16 +266,15 @@ class Booking{
     //jesli obiekt dom.tamble ma klase booked, zablokuj bookedActiv
 
     for (let table of thisBooking.dom.tables) {
-
+      
       table.addEventListener('click', function () {
         table.classList.add(classNames.booking.tableBookedActiv);
-        console.log('table',table.classList);
-        
+        console.log('table',table);
+        const tableSelectedId = thisBooking.dom.tableBookedActiv.getAttribute(settings.booking.tableIdAttribute);
         if(table != tableSelectedId) {
           table.classList.remove(classNames.booking.tableBookedActiv);
         }
-        const tableSelectedId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
-        console.log('tableSelected', tableSelectedId);
+     
         thisBooking.tableSelected = tableSelectedId;
 
 
