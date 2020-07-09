@@ -5,6 +5,7 @@ import utils from '../utils.js';
 import  AmountWidget  from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
+// import { active } from 'browser-sync';
 
 
 //10.2.2 Add Class Booking with constructor,  
@@ -14,12 +15,13 @@ class Booking{
     const thisBooking = this;
 
     thisBooking.submit = settings.booking.submit;
-    //init methods render and initWidgets 10.2.3
+    // methods render and initWidgets 10.2.3
     thisBooking.render(bookingElement);
     thisBooking.initWidgets();
     thisBooking.getData();
-    thisBooking.selectTable();
-    // thisBooking.initActions();
+    thisBooking.initSelectTable();
+    thisBooking.initActions();
+    thisBooking.clearSelected();
   }
   //11.1
   getData(){
@@ -249,7 +251,7 @@ class Booking{
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
-        thisBooking.makeBooked(parsedResponse);
+        // thisBooking.makeBooked(parsedResponse(date, hour, table, duration));
       });
   }
   initActions(){
@@ -260,37 +262,47 @@ class Booking{
       thisBooking.sendReservation();
       console.log('submit',thisBooking.sendReservation());
     });
+    
   }
-  //selectTable klikniety na stronie "aktywny"
-  selectTable() {
+  //metoda clearSelected dezaktywuje wybrany (kliknięty) stolik
+  clearSelected(){
     const thisBooking = this;
-    //jesli obiekt dom.tamble ma klase booked, zablokuj bookedActiv
+    //wyzerowanie wartości atrybutu thisBooking.tableSelected
+    thisBooking.tableSelected = null;
+    // ustanowienie stałej activeTables
+    const activeTables = thisBooking.dom.wrapper.querySelectorAll(select.booking.activeTable);
+    console.log('activetables',activeTables);
+    //pętla wybierająca pojedynczy element z activeTables
+    for (const activeTable of activeTables){
+      //usunięcie klasy tableBookedActiv
+      activeTable.classList.remove(classNames.booking.tableBookedActive);
 
-    for (let table of thisBooking.dom.tables) {
-      let tableId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
-      table.addEventListener('click', function () {
-        console.log('table',table);
-        table.classList.add(classNames.booking.tableBookedActive);
-        
-        let tableSelected = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
-        
-        console.log('tableSelectedId',tableSelected);
-        console.log('tableId', tableId);
-        if(tableId != tableSelected) {
-          table.classList.remove(classNames.booking.tableBookedActive);
-          tableSelected = parseInt(table.removeAttribute(settings.booking.tableIdAttribute));
-        } else {
-          table.addEventListener('click', function () {
-            console.log('table',table);
-            table.classList.remove(classNames.booking.tableBookedActive);
-          });
-        }
-        thisBooking.tableSelected = tableSelected;
-
-
-      });
     }
 
+  }
+  // inicjowanie metody w której nadajemy klasę aktywną dla klikniętego elementu DOM (stolik) 
+  //selectTable klikniety na stronie "aktywny"
+  initSelectTable() {
+    const thisBooking = this;
+ /* pętla iterująca po wszystkich elementach table, pobierająca ich atrybut - 
+ liczbę, która jest do nich przypisana, zwracany jako liczba dzięki parseInt */
+    for (let table of thisBooking.dom.tables) {
+      const tableSelected = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+    // dodanie eventlisnera na kliknięcie, na obbiekcie
+      table.addEventListener('click', function () {
+        /*jeśli atrybut klikniętego thisBooking.tableSelected jest równy 
+         atrybutowi zawartemu w zmiennej tableSelected wtedy uruchamiana jest metoda clearSelected */
+        if (thisBooking.tableSelected == tableSelected) {
+          thisBooking.clearSelected();
+          /* jeśli atrybut klikniętego thisBooking.tableSelected nie jest 
+          równy atrybutowi zawartemu w zmiennej tableSelected nadaj mu klasę tableBookedActive */ 
+        } else {
+          thisBooking.clearSelected();
+          table.classList.add(classNames.booking.tableBookedActive);
+          thisBooking.tableSelected = tableSelected;
+        }
+      });
+    }
   }
 }
 

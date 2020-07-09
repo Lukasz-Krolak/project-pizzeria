@@ -40,8 +40,11 @@ export const select = {
       output: '.output',
     },
     button: {
-      submit: '.btn-secondary'//submit
+      submit: '.btn-secondary',//submit
     },
+    activeTable: {
+      activeTable: '.bookedActive',
+    }
     
   },
   cart: {
