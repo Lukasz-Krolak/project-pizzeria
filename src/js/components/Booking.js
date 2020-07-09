@@ -284,16 +284,17 @@ class Booking{
   //selectTable klikniety na stronie "aktywny"
   initSelectTable() {
     const thisBooking = this;
- /* pętla iterująca po wszystkich elementach table, pobierająca ich atrybut - 
+    /* pętla iterująca po wszystkich elementach table, pobierająca ich atrybut - 
  liczbę, która jest do nich przypisana, zwracany jako liczba dzięki parseInt */
     for (let table of thisBooking.dom.tables) {
       const tableSelected = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
-    // dodanie eventlisnera na kliknięcie, na obbiekcie
+      // dodanie eventlisnera na kliknięcie, na obbiekcie
       table.addEventListener('click', function () {
         /*jeśli atrybut klikniętego thisBooking.tableSelected jest równy 
          atrybutowi zawartemu w zmiennej tableSelected wtedy uruchamiana jest metoda clearSelected */
         if (thisBooking.tableSelected == tableSelected) {
           thisBooking.clearSelected();
+          console.log('thisBooking.clearSelected',thisBooking.clearSelected);
           /* jeśli atrybut klikniętego thisBooking.tableSelected nie jest 
           równy atrybutowi zawartemu w zmiennej tableSelected nadaj mu klasę tableBookedActive */ 
         } else {

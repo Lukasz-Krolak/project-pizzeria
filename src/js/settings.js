@@ -42,11 +42,10 @@ export const select = {
     button: {
       submit: '.btn-secondary',//submit
     },
-    activeTable: {
-      activeTable: '.bookedActive',
-    }
+    
     
   },
+
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',
@@ -73,6 +72,7 @@ export const select = {
     address: '.booking-form [name="address"]',
     starters: '.booking-form [type="checkbox"]',
     form: '.booking-form',
+    activeTable: '.bookedActive',
   },
   nav: {
     links: '.main-nav a',
