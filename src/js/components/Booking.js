@@ -196,6 +196,14 @@ class Booking{
     
     thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
+      console.log('sssss', thisBooking.dom.wrapper);
+    });
+    thisBooking.dom.datePicker.addEventListener('updated', function () {
+      thisBooking.updateDOM();
+    });
+    thisBooking.dom.hourPicker.addEventListener('updated', function () {
+      thisBooking.updateDOM();
+      console.log('!!!!',thisBooking.updateDOM());
     });
     thisBooking.dom.form.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -303,6 +311,22 @@ class Booking{
           thisBooking.tableSelected = tableSelected;
         }
       });
+      console.log('AAAAA',thisBooking.dom.hourPicker, thisBooking.dom.datePicker);
+      table.addEventListener('updated', function () {
+        const tableParams = parseInt(table.getAttribute(thisBooking.dom.hourPicker, thisBooking.dom.datePicker));
+        
+        if (thisBooking.tableParams != thisBooking.dom.hourPicker, thisBooking.dom.datePicker) {
+          thisBooking.clearSelected();
+          console.log('thisBooking.clearSelected',thisBooking.clearSelected);
+          /* jeśli atrybut klikniętego thisBooking.tableSelected nie jest 
+            równy atrybutowi zawartemu w zmiennej tableSelected nadaj mu klasę tableBookedActive */ 
+        } else {
+          thisBooking.clearSelected();
+          table.classList.add(classNames.booking.tableBookedActive);
+          thisBooking.tableSelected = tableSelected;
+        }
+      });
+
     }
   }
 }
