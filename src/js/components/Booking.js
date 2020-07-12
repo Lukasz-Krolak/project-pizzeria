@@ -268,9 +268,13 @@ class Booking{
     thisBooking.dom.form.addEventListener('submit', function(){
       event.preventDefault();
       thisBooking.sendReservation();
-      console.log('submit',thisBooking.sendReservation());
+      console.log('submit' , thisBooking.sendReservation());
     });
-    
+    for (let table of thisBooking.dom.tables) {
+      table.addEventListener('updated', function () {
+        thisBooking.clearSelected();
+      });
+    }
   }
   //metoda clearSelected dezaktywuje wybrany (kliknięty) stolik
   clearSelected(){
@@ -311,21 +315,7 @@ class Booking{
           thisBooking.tableSelected = tableSelected;
         }
       });
-      console.log('AAAAA',thisBooking.dom.hourPicker, thisBooking.dom.datePicker);
-      table.addEventListener('updated', function () {
-        const tableParams = parseInt(table.getAttribute(thisBooking.dom.hourPicker, thisBooking.dom.datePicker));
-        
-        if (thisBooking.tableParams != thisBooking.dom.hourPicker, thisBooking.dom.datePicker) {
-          thisBooking.clearSelected();
-          console.log('thisBooking.clearSelected',thisBooking.clearSelected);
-          /* jeśli atrybut klikniętego thisBooking.tableSelected nie jest 
-            równy atrybutowi zawartemu w zmiennej tableSelected nadaj mu klasę tableBookedActive */ 
-        } else {
-          thisBooking.clearSelected();
-          table.classList.add(classNames.booking.tableBookedActive);
-          thisBooking.tableSelected = tableSelected;
-        }
-      });
+
 
     }
   }
