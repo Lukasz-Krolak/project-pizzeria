@@ -10,11 +10,14 @@ const app = {
     thisApp.initCart(); //9
     thisApp.initData();
     // thisApp.initMenu();//9.7
+
     thisApp.initPages(); //10.2
     thisApp.initBooking(); //10.2.1
     // thisApp.initCarousel();//11.3
   },
   initPages: function() {
+    //kontenery podstron 
+
     const thisApp = this;
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
@@ -61,6 +64,7 @@ const app = {
     const bookingElement = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking (bookingElement);
   },
+  
   initMenu: function(){
     const thisApp = this;
     for(let productData in thisApp.data.products){

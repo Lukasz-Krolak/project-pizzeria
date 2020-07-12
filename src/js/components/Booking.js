@@ -78,8 +78,11 @@ class Booking{
         // console.log('repeat', eventsRepeat);
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
         
+      })
+      .then(function(date, hour, duration, table){
+        thisBooking.makeBooked(date, hour, duration, table);
       });
-
+    thisBooking.updateDOM();
   }
   parseData(bookings, eventsCurrent, eventsRepeat){
     const thisBooking = this;
@@ -116,7 +119,6 @@ class Booking{
 
     // pętla z iteratorem
     for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5){
-      
       if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
         thisBooking.booked[date][hourBlock] = [];  
       }
