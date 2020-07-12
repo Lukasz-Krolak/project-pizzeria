@@ -199,11 +199,10 @@ class Booking{
       console.log('sssss', thisBooking.dom.wrapper);
     });
     thisBooking.dom.datePicker.addEventListener('updated', function () {
-      thisBooking.updateDOM();
+      thisBooking.clearSelected();
     });
     thisBooking.dom.hourPicker.addEventListener('updated', function () {
-      thisBooking.updateDOM();
-      console.log('!!!!',thisBooking.updateDOM());
+      thisBooking.clearSelected();
     });
     thisBooking.dom.form.addEventListener('submit', function (event) {
       event.preventDefault();
