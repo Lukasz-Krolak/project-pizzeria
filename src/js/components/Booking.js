@@ -244,6 +244,7 @@ class Booking{
       }).then(function(parsedResponse){
         thisBooking.parsedResponse = {};
         thisBooking.updateDOM();
+        thisBooking.getData();
         console.log('parsedResponse', parsedResponse);
         // thisBooking.makeBooked(parsedResponse(date, hour, table, duration));
       });
