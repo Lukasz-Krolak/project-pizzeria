@@ -76,7 +76,9 @@ class Booking{
 
       })
       .then(function(parsedResponse){
-        thisBooking.makeBooked(parsedResponse.data);
+        const thisBooking = this;
+        thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
+        
         thisBooking.updateDOM();
       });
 
