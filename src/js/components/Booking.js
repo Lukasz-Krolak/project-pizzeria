@@ -5,7 +5,6 @@ import utils from '../utils.js';
 import  AmountWidget  from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
-// import { active } from 'browser-sync';
 //10.2.2 Add Class Booking with constructor,  
 class Booking{
   constructor(bookingElement) {
@@ -64,25 +63,16 @@ class Booking{
           bookingsResponse.json(),
           eventsCurrentResponse.json(),
           eventsRepeatResponse.json(),
-          console.log('B',bookingsResponse),
-          console.log('R',eventsRepeatResponse),
         ]); 
       })
       .then(function([bookings, eventsCurrent, eventsRepeat]){
-        // console.log('bookings', bookings);
-        // console.log('current', eventsCurrent);
-        // console.log('repeat', eventsRepeat);
+      // console.log('bookings', bookings);
+      // console.log('current', eventsCurrent);
+      // console.log('repeat', eventsRepeat);
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
 
-      })
-      .then(function(parsedResponse){
-        const thisBooking = this;
-        thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
-        
-        thisBooking.updateDOM();
       });
 
-    // thisBooking.updateDOM();
   }
   parseData(bookings, eventsCurrent, eventsRepeat){
     const thisBooking = this;
@@ -245,11 +235,9 @@ class Booking{
         return response.json();
       }).then(function(parsedResponse){
         thisBooking.parsedResponse = {};
-        thisBooking.updateDOM();
-        thisBooking.getData();
-        console.log('parsedResponse', parsedResponse);
-        // thisBooking.makeBooked(parsedResponse(date, hour, table, duration));
+        thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
       });
+    thisBooking.updateDOM();
   }
   initActions(){
     const thisBooking = this;
