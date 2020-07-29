@@ -217,7 +217,6 @@ class Booking{
       phone: thisBooking.dom.phone.value,
       address: thisBooking.dom.address.value,
     };
-    //checkbox starters, nie getData()
     for (let starter of thisBooking.dom.starters) {
       if (starter.checked === true) {
         payload.starters.push(starter.value); 
@@ -234,10 +233,11 @@ class Booking{
       .then(function(response){
         return response.json();
       }).then(function(parsedResponse){
-        thisBooking.parsedResponse = {};
         thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
+        thisBooking.updateDOM();
       });
-    thisBooking.updateDOM();
+    
+    
   }
   initActions(){
     const thisBooking = this;
