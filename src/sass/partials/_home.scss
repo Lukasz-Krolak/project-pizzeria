@@ -1,0 +1,226 @@
+/* Global */
+
+.main-nav {
+  .order,
+  .booking {
+    display: none;
+  }
+}
+
+.home-wrapper {
+  margin: 42px auto;
+  padding: 72px 48px;
+  background: $color-light;
+  border-bottom: 1px solid #e6e6e6;
+  border-radius: $radius;
+  font-family: $font-header;
+}
+
+/* Box order and booking */
+
+.home-order-booking {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  color: $color-light;
+
+  .home-order {
+    background-image: url('../../images/pizza-1.jpg');
+    margin-right: 10px;
+  }
+
+  .home-booking {
+    background-image: url('../../images/pizza-2.jpg');
+  }
+
+
+  .box {
+    position: relative;
+    width: 100%;
+    height: 125px;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    border-radius: $radius;
+    cursor: pointer;
+
+    .inner-box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 11%;
+      transition: $transition;
+
+      &:hover {
+        top: -15%;
+
+        h4 {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* Box opening hours */
+
+.opening-hours-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  text-align: center;
+  border-radius: $radius;
+  background-color: #fe6b6b;
+  color: $color-light;
+  margin: 10px 0 60px;
+
+  h4 {
+    margin: 0;
+  }
+
+  p {
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}
+
+/*Quotes */
+.quote-wrapper {
+  .quote-all {
+    display: flex;
+    margin: 30px 0 10px;
+
+    .quote-img {
+      flex: 1;
+      width: 190px;
+      height: 190px;
+      margin-right: 40px;
+      border-radius: $radius;
+      background-size: cover;
+      background-position: center;
+      }
+    .quote-text {
+      flex: 2;
+      font-family: $font-text;
+
+      p:nth-child(1) {
+        text-transform: uppercase;
+        font-weight: $font-bold;
+      }
+
+      p:nth-child(3) {
+        font-style: italic;
+      }
+    }
+  }
+}
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #b12213;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #788171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+/* Gallery */
+
+.home-gallery {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .gallery-img {
+    flex-basis: 31.5%;
+    position: relative;
+    height: 180px;
+    margin: 5px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::before {
+      position: absolute;
+      display: none;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      opacity: 0.4;
+    }
+
+    &:hover::before {
+      display: block;
+    }
+
+    &:hover .gallery-icons {
+      display: block;
+    }
+  }
+
+  .gallery-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    font-size: 25px;
+
+    a {
+      color: $color-light;
+      margin: 4px;
+
+      &:hover .fa-heart {
+        color: #ff0000;
+      }
+    }
+  }
+}
+
+/* Footer */
+
+.home-footer {
+  font-family: $font-text;
+  margin-top: 20px;
+
+  .footer {
+    color: #fe6b6b;
+  }
+}
